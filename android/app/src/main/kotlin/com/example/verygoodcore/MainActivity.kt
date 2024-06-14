@@ -1,4 +1,4 @@
-package com.example.verygoodcore.x_clone
+package com.x.hkarmoush
 
 import io.flutter.embedding.android.FlutterActivity
 

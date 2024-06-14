@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "940133162795",
+    "project_id": "xclone-9a111",
+    "storage_bucket": "xclone-9a111.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940133162795:android:8268f973b20fbec91c2f6e",
+        "android_client_info": {
+          "package_name": "com.x.hkarmoush"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYI6YfpuKmwWhVSgMDNd-YJAQmQshGUEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

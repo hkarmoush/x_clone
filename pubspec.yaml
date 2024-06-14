@@ -23,6 +23,7 @@ dependencies:
   go_router: ^14.2.0
   injectable: ^2.4.2
   intl: ^0.19.0
+  logger: ^2.3.0
 
 dev_dependencies:
   flutter_test:
