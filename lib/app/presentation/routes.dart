@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:x_clone/app/presentation/auth/views/auth_check.dart';
 import 'package:x_clone/app/presentation/auth/views/reset_password_screen.dart';
-import 'package:x_clone/app/presentation/auth/views/signin_screen.dart';
 import 'package:x_clone/app/presentation/auth/views/signup_screen.dart';
 
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => SignInScreen(),
+      builder: (context, state) => const AuthCheck(),
     ),
     GoRoute(
       path: '/signup',

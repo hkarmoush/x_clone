@@ -3,10 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PlatformScaffold extends StatelessWidget {
-  const PlatformScaffold({required this.body, super.key, this.appBar});
-
+  const PlatformScaffold({
+    required this.body,
+    this.appBar,
+    this.bottomNavigationBar,
+    super.key,
+  });
   final PreferredSizeWidget? appBar;
   final Widget body;
+  final Widget? bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +23,7 @@ class PlatformScaffold extends StatelessWidget {
         : Scaffold(
             appBar: appBar,
             body: body,
+            bottomNavigationBar: bottomNavigationBar,
           );
   }
 }
