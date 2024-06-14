@@ -19,8 +19,8 @@ import 'package:x_clone/app/domain/usecases/auth/register.dart' as _i6;
 import 'package:x_clone/app/domain/usecases/auth/reset_password.dart' as _i9;
 import 'package:x_clone/app/domain/usecases/auth/signin.dart' as _i10;
 import 'package:x_clone/app/domain/usecases/auth/signout.dart' as _i7;
-import 'package:x_clone/app/view/auth/blocs/auth_bloc.dart' as _i11;
-import 'package:x_clone/app/view/injection.dart' as _i12;
+import 'package:x_clone/app/presentation/auth/blocs/auth_bloc.dart' as _i11;
+import 'package:x_clone/app/presentation/injection.dart' as _i12;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt

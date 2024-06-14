@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:x_clone/app/view/auth/blocs/auth_bloc.dart';
+import 'package:x_clone/app/presentation/auth/blocs/auth_bloc.dart';
 
-class SignUpScreen extends StatelessWidget {
-  SignUpScreen({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  ResetPasswordScreen({super.key});
 
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign Up')),
+      appBar: AppBar(title: const Text('Reset Password')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -21,25 +19,13 @@ class SignUpScreen extends StatelessWidget {
               controller: emailController,
               decoration: const InputDecoration(labelText: 'Email'),
             ),
-            TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 final email = emailController.text;
-                final password = passwordController.text;
-                context.read<AuthBloc>().add(RegisterEvent(email, password));
+                context.read<AuthBloc>().add(ResetPasswordEvent(email));
               },
-              child: const Text('Sign Up'),
-            ),
-            TextButton(
-              onPressed: () {
-                context.pop();
-              },
-              child: const Text('Already have an account? Sign In'),
+              child: const Text('Reset Password'),
             ),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
@@ -48,8 +34,8 @@ class SignUpScreen extends StatelessWidget {
                     'Error: ${state.message}',
                     style: const TextStyle(color: Colors.red),
                   );
-                } else if (state is Authenticated) {
-                  return const Text('Signed Up Successfully');
+                } else if (state is Unauthenticated) {
+                  return const Text('Reset link sent to email');
                 }
                 return Container();
               },

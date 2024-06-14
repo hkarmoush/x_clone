@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart'
     show CupertinoApp, CupertinoColors, CupertinoThemeData;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:x_clone/app/view/auth/blocs/auth_bloc.dart';
-import 'package:x_clone/app/view/configure_dependencies.dart';
-import 'package:x_clone/app/view/routes.dart';
+import 'package:x_clone/app/presentation/auth/blocs/auth_bloc.dart';
+import 'package:x_clone/app/presentation/configure_dependencies.dart';
+import 'package:x_clone/app/presentation/routes.dart';
 import 'package:x_clone/l10n/l10n.dart';
 
 class App extends StatelessWidget {
