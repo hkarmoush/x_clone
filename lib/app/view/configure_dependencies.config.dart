@@ -14,12 +14,12 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:x_clone/app/data/repositories/auth_repository_impl.dart' as _i5;
 import 'package:x_clone/app/domain/repositories/auth_repository.dart' as _i4;
 import 'package:x_clone/app/domain/usecases/auth/auth_state_changed.dart'
-    as _i11;
-import 'package:x_clone/app/domain/usecases/auth/register.dart' as _i9;
-import 'package:x_clone/app/domain/usecases/auth/reset_password.dart' as _i10;
-import 'package:x_clone/app/domain/usecases/auth/signin.dart' as _i7;
-import 'package:x_clone/app/domain/usecases/auth/signout.dart' as _i8;
-import 'package:x_clone/app/view/auth/blocs/auth_bloc.dart' as _i6;
+    as _i8;
+import 'package:x_clone/app/domain/usecases/auth/register.dart' as _i6;
+import 'package:x_clone/app/domain/usecases/auth/reset_password.dart' as _i9;
+import 'package:x_clone/app/domain/usecases/auth/signin.dart' as _i10;
+import 'package:x_clone/app/domain/usecases/auth/signout.dart' as _i7;
+import 'package:x_clone/app/view/auth/blocs/auth_bloc.dart' as _i11;
 import 'package:x_clone/app/view/injection.dart' as _i12;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -37,12 +37,19 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i3.FirebaseAuth>(() => registerModule.firebaseAuth);
     gh.lazySingleton<_i4.AuthRepository>(
         () => _i5.AuthRepositoryImpl(gh<_i3.FirebaseAuth>()));
-    gh.factory<_i6.AuthBloc>(() => _i6.AuthBloc(
-          gh<_i7.SignIn>(),
-          gh<_i8.SignOut>(),
-          gh<_i9.Register>(),
-          gh<_i10.ResetPassword>(),
-          gh<_i11.AuthStateChanges>(),
+    gh.factory<_i6.Register>(() => _i6.Register(gh<_i4.AuthRepository>()));
+    gh.factory<_i7.SignOut>(() => _i7.SignOut(gh<_i4.AuthRepository>()));
+    gh.factory<_i8.AuthStateChanges>(
+        () => _i8.AuthStateChanges(gh<_i4.AuthRepository>()));
+    gh.factory<_i9.ResetPassword>(
+        () => _i9.ResetPassword(gh<_i4.AuthRepository>()));
+    gh.factory<_i10.SignIn>(() => _i10.SignIn(gh<_i4.AuthRepository>()));
+    gh.factory<_i11.AuthBloc>(() => _i11.AuthBloc(
+          gh<_i10.SignIn>(),
+          gh<_i7.SignOut>(),
+          gh<_i6.Register>(),
+          gh<_i9.ResetPassword>(),
+          gh<_i8.AuthStateChanges>(),
         ));
     return this;
   }

@@ -22,6 +22,15 @@ class UserModel with _$UserModel {
     );
   }
 
+  factory UserModel.mock() {
+    return const UserModel(
+      uid: '1X4GTDSSDGBFNDFLGJB',
+      email: 'testemail@test.com',
+    );
+  }
+}
+
+extension MapToEntity on UserModel {
   UserEntity toEntity() {
     return UserEntity(
       uid: uid,
