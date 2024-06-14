@@ -28,6 +28,10 @@ class UserModel with _$UserModel {
       email: 'testemail@test.com',
     );
   }
+
+  factory UserModel.fromEntity(UserEntity entity) {
+    return UserModel(uid: entity.uid, email: entity.email);
+  }
 }
 
 extension MapToEntity on UserModel {
