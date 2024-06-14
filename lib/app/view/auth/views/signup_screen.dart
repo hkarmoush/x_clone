@@ -3,18 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_clone/app/view/auth/blocs/auth_bloc.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({super.key});
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  SignInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign In')),
+      appBar: AppBar(title: const Text('Sign Up')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             TextField(
@@ -31,29 +31,25 @@ class SignInScreen extends StatelessWidget {
               onPressed: () {
                 final email = emailController.text;
                 final password = passwordController.text;
-                context.read<AuthBloc>().add(SignInEvent(email, password));
+                context.read<AuthBloc>().add(RegisterEvent(email, password));
               },
-              child: const Text('Sign In'),
+              child: const Text('Sign Up'),
             ),
             TextButton(
               onPressed: () {
-                context.go('/reset-password');
+                context.pop();
               },
-              child: const Text('Forgot Password?'),
-            ),
-            TextButton(
-              onPressed: () {
-                context.go('/signup');
-              },
-              child: const Text('Don\'t have an account? Sign Up'),
+              child: const Text('Already have an account? Sign In'),
             ),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {
                 if (state is AuthError) {
-                  return Text('Error: ${state.message}',
-                      style: const TextStyle(color: Colors.red));
+                  return Text(
+                    'Error: ${state.message}',
+                    style: const TextStyle(color: Colors.red),
+                  );
                 } else if (state is Authenticated) {
-                  return const Text('Signed In Successfully');
+                  return const Text('Signed Up Successfully');
                 }
                 return Container();
               },
