@@ -22,8 +22,10 @@ class UserModel with _$UserModel {
     );
   }
 
-  UserEntity toEntity() => UserEntity(
-        uid: uid,
-        email: email,
-      );
+  UserEntity toEntity() {
+    return UserEntity(
+      uid: uid,
+      email: email,
+    );
+  }
 }
