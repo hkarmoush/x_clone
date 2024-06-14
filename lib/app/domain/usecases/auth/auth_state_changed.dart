@@ -3,10 +3,10 @@ import 'package:x_clone/app/domain/repositories/auth_repository.dart';
 
 class AuthStateChanges {
   AuthStateChanges(this.repository);
-  
+
   final AuthRepository repository;
 
-  Stream<User?> call() {
+  Stream<UserEntity?> call() {
     return repository.authStateChanges;
   }
 }

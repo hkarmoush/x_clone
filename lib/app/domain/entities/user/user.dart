@@ -3,13 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.freezed.dart';
 
 @freezed
-class User with _$User {
-  const factory User({
+class UserEntity with _$UserEntity {
+  const factory UserEntity({
     required String uid,
     required String email,
-  }) = _User;
-}
-
-extension UserX on User {
-  List<Object> get props => [uid, email];
+  }) = _UserEntity;
 }
