@@ -3,14 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PlatformAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const PlatformAppBar({
+    required this.title,
+    super.key,
+    this.actions,
+  });
   final String title;
   final List<Widget>? actions;
-
-  const PlatformAppBar({
-    Key? key,
-    required this.title,
-    this.actions,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

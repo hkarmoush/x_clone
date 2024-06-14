@@ -50,8 +50,10 @@ class SignUpScreen extends StatelessWidget {
               BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
                   if (state is AuthError) {
-                    return Text('Error: ${state.message}',
-                        style: const TextStyle(color: Colors.red));
+                    return Text(
+                      'Error: ${state.message}',
+                      style: const TextStyle(color: Colors.red),
+                    );
                   } else if (state is Authenticated) {
                     return const Text('Signed Up Successfully');
                   }

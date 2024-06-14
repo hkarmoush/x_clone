@@ -60,7 +60,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   Future<UserEntity?> getUser(String uid) async {
-    return await userDataSource.getUser(uid);
+    return userDataSource.getUser(uid);
   }
 
   Future<void> updateUser(UserEntity user) async {

@@ -8,10 +8,10 @@ abstract class AuthEvent extends Equatable {
 }
 
 class SignInEvent extends AuthEvent {
+  const SignInEvent(this.email, this.password);
+
   final String email;
   final String password;
-
-  const SignInEvent(this.email, this.password);
 
   @override
   List<Object> get props => [email, password];
@@ -20,28 +20,28 @@ class SignInEvent extends AuthEvent {
 class SignOutEvent extends AuthEvent {}
 
 class RegisterEvent extends AuthEvent {
+  const RegisterEvent(this.email, this.password);
+
   final String email;
   final String password;
-
-  const RegisterEvent(this.email, this.password);
 
   @override
   List<Object> get props => [email, password];
 }
 
 class ResetPasswordEvent extends AuthEvent {
-  final String email;
-
   const ResetPasswordEvent(this.email);
+
+  final String email;
 
   @override
   List<Object> get props => [email];
 }
 
 class AuthStateChanged extends AuthEvent {
-  final UserEntity? user;
-
   const AuthStateChanged(this.user);
+
+  final UserEntity? user;
 
   @override
   List<Object> get props => [
