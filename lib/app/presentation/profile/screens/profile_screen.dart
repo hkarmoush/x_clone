@@ -7,9 +7,9 @@ import 'package:x_clone/app/presentation/profile/bloc/profile_bloc.dart';
 import 'package:x_clone/app/presentation/profile/screens/widgets/tweet_item.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final String userId;
+  const ProfileScreen({required this.userId, super.key});
 
-  const ProfileScreen({Key? key, required this.userId}) : super(key: key);
+  final String userId;
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
