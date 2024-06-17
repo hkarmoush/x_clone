@@ -4,6 +4,7 @@ import 'package:x_clone/app/core/widgets/platform_appbar.dart';
 import 'package:x_clone/app/core/widgets/platform_scaffold.dart';
 import 'package:x_clone/app/data/models/user/tweet/tweet_model.dart';
 import 'package:x_clone/app/presentation/profile/bloc/profile_bloc.dart';
+import 'package:x_clone/app/presentation/profile/screens/widgets/tweet_item.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String userId;
@@ -67,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               itemCount: tweets.length,
               itemBuilder: (context, index) {
                 final tweet = tweets[index];
-                // return TweetItem(tweet: TweetModel.fromEntity(tweet));
+                return TweetItem(tweet: TweetModel.fromEntity(tweet));
               },
             );
           } else if (state is ProfileError) {
