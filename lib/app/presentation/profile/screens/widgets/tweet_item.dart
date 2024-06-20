@@ -8,11 +8,13 @@ class TweetItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final author = tweet.authorId;
+    final likes = tweet.likes;
+    final retweets = tweet.retweets;
     return Card(
       child: ListTile(
         title: Text(tweet.content),
-        subtitle: Text(
-            'Author: ${tweet.authorId}\nLikes: ${tweet.likes} Retweets: ${tweet.retweets}'),
+        subtitle: Text('Author: $author\nLikes: $likes Retweets: $retweets'),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
