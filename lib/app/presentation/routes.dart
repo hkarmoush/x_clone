@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:x_clone/app/core/widgets/platform_scaffold.dart';
 import 'package:x_clone/app/presentation/auth/views/auth_check.dart';
 import 'package:x_clone/app/presentation/auth/views/reset_password_screen.dart';
 import 'package:x_clone/app/presentation/auth/views/signup_screen.dart';
+import 'package:x_clone/app/presentation/profile/screens/profile_screen.dart';
+import 'package:x_clone/app/presentation/tweet/screens/tweet_screen.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -16,6 +20,20 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/reset-password',
       builder: (context, state) => ResetPasswordScreen(),
+    ),
+    GoRoute(
+      path: '/profile/:userId',
+      builder: (context, state) {
+        final userId = state.pathParameters['userId'];
+        if (userId != null) {
+          return ProfileScreen(userId: userId);
+        }
+        return const PlatformScaffold(body: SizedBox());
+      },
+    ),
+    GoRoute(
+      path: '/create-tweet',
+      builder: (context, state) => const CreateTweetScreen(),
     ),
   ],
 );
