@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:x_clone/app/core/widgets/platform_appbar.dart';
 import 'package:x_clone/app/core/widgets/platform_bottom_navigation_bar.dart';
 import 'package:x_clone/app/core/widgets/platform_bottom_sheet.dart';
@@ -18,9 +19,13 @@ class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 3) {
+      context.go('/create-tweet');
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   void _showCreateTweetSheet() {
@@ -46,6 +51,11 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void _navigateToProfile() {
+    context.go('/profile/myUserId');
+    //TODO:-  Replace 'myUserId' with the actual user ID
+  }
+
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
@@ -57,6 +67,10 @@ class HomeScreenState extends State<HomeScreen> {
               Platform.isIOS ? CupertinoIcons.add_circled : Icons.add_circle,
             ),
             onPressed: _showCreateTweetSheet,
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: _navigateToProfile,
           ),
         ],
       ),

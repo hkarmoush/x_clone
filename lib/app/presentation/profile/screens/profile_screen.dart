@@ -12,10 +12,10 @@ class ProfileScreen extends StatefulWidget {
   final String userId;
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreenState extends State<ProfileScreen> {
   final ScrollController _scrollController = ScrollController();
 
   @override
