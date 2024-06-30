@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:injectable/injectable.dart';
 import 'package:x_clone/app/data/datasources/tweet/tweet_data_source.dart';
 
+@Injectable(as: TweetDataSource)
 class TweetDataSourceFirestore implements TweetDataSource {
   TweetDataSourceFirestore(this.firestore, this.storage);
 
@@ -25,7 +27,6 @@ class TweetDataSourceFirestore implements TweetDataSource {
       'content': content,
       'images': imageUrls,
       'timestamp': Timestamp.now(),
-      // Add other necessary fields
     });
   }
 }

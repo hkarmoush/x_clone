@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:x_clone/app/core/widgets/platform_appbar.dart';
 import 'package:x_clone/app/core/widgets/platform_button.dart';
 import 'package:x_clone/app/core/widgets/platform_scaffold.dart';
@@ -12,12 +11,12 @@ class CreateTweetScreen extends StatefulWidget {
   const CreateTweetScreen({super.key});
 
   @override
-  _CreateTweetScreenState createState() => _CreateTweetScreenState();
+  CreateTweetScreenState createState() => CreateTweetScreenState();
 }
 
-class _CreateTweetScreenState extends State<CreateTweetScreen> {
+class CreateTweetScreenState extends State<CreateTweetScreen> {
   final TextEditingController _tweetController = TextEditingController();
-  final ImagePicker _picker = ImagePicker();
+  // final ImagePicker _picker = ImagePicker();
   final List<File> _selectedImages = [];
 
   @override
@@ -27,12 +26,12 @@ class _CreateTweetScreenState extends State<CreateTweetScreen> {
   }
 
   Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      setState(() {
-        _selectedImages.add(File(pickedFile.path));
-      });
-    }
+    // final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    // if (pickedFile != null) {
+    //   setState(() {
+    //     _selectedImages.add(File(pickedFile.path));
+    //   });
+    // }
   }
 
   void _createTweet() {

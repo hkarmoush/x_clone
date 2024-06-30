@@ -24,11 +24,8 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/profile/:userId',
       builder: (context, state) {
-        final userId = state.pathParameters['userId'];
-        if (userId != null) {
-          return ProfileScreen(userId: userId);
-        }
-        return const PlatformScaffold(body: SizedBox());
+        final userId = state.pathParameters['userId']!;
+        return ProfileScreen(userId: userId);
       },
     ),
     GoRoute(

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -52,8 +51,8 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   void _navigateToProfile() {
-    context.go('/profile/myUserId');
-    //TODO:-  Replace 'myUserId' with the actual user ID
+    context
+        .go('/profile/myUserId'); // Replace 'myUserId' with the actual user ID
   }
 
   @override
