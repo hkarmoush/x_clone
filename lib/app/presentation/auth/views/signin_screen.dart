@@ -19,10 +19,12 @@ class SignInScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            const SizedBox(height: 128),
             PlatformTextField(
               controller: emailController,
               placeholder: 'Email',
             ),
+            const SizedBox(height: 8),
             PlatformTextField(
               controller: passwordController,
               placeholder: 'Password',
@@ -39,37 +41,24 @@ class SignInScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                context.go('/reset-password');
+                context.push('/reset-password');
               },
               child: const Text('Forgot Password?'),
             ),
+            const Spacer(),
             TextButton(
               onPressed: () {
-                context.go('/signup');
+                context.push('/signup');
               },
               child: const Text("Don't have an account? Sign Up"),
             ),
             BlocListener<AuthBloc, AuthState>(
               listener: (context, state) {
-                if (state is AuthError) {
-                  PlatformDialog.show(
-                    context: context,
-                    title: 'Error',
-                    content: state.message,
-                  );
-                }
+                _errorListener(state, context);
               },
               child: BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, state) {
-                  if (state is AuthError) {
-                    return Text(
-                      'Error: ${state.message}',
-                      style: const TextStyle(color: Colors.red),
-                    );
-                  } else if (state is Authenticated) {
-                    return const Text('Signed In Successfully');
-                  }
-                  return Container();
+                  return _errorBuilder(state);
                 },
               ),
             ),
@@ -77,5 +66,27 @@ class SignInScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _errorListener(AuthState state, BuildContext context) {
+    if (state is AuthError) {
+      PlatformDialog.show(
+        context: context,
+        title: 'Error',
+        content: state.message,
+      );
+    }
+  }
+
+  StatelessWidget _errorBuilder(AuthState state) {
+    if (state is AuthError) {
+      return Text(
+        'Error: ${state.message}',
+        style: const TextStyle(color: Colors.red),
+      );
+    } else if (state is Authenticated) {
+      return const Text('Signed In Successfully');
+    }
+    return Container();
   }
 }
