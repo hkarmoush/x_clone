@@ -31,3 +31,15 @@ class PlatformAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize =>
       Size.fromHeight(Platform.isIOS ? 44.0 : kToolbarHeight);
 }
+
+class ObstructingPreferredPlatformAppBar extends PlatformAppBar
+    implements ObstructingPreferredSizeWidget {
+  const ObstructingPreferredPlatformAppBar({
+    required super.title,
+    super.key,
+    super.actions,
+  });
+
+  @override
+  bool shouldFullyObstruct(BuildContext context) => true;
+}

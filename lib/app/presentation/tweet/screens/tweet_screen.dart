@@ -46,7 +46,7 @@ class CreateTweetScreenState extends State<CreateTweetScreen> {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      appBar: PlatformAppBar(
+      appBar: ObstructingPreferredPlatformAppBar(
         title: 'Create Tweet',
         actions: [
           PlatformButton(

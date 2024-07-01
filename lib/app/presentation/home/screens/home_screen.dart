@@ -58,7 +58,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      appBar: PlatformAppBar(
+      appBar: ObstructingPreferredPlatformAppBar(
         title: 'Home',
         actions: [
           IconButton(

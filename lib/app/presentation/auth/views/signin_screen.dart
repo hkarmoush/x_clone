@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:x_clone/app/core/widgets/platform_appbar.dart';
 import 'package:x_clone/app/core/widgets/platform_button.dart';
 import 'package:x_clone/app/core/widgets/platform_dialog.dart';
+import 'package:x_clone/app/core/widgets/platform_scaffold.dart';
 import 'package:x_clone/app/core/widgets/platform_textfield.dart';
 import 'package:x_clone/app/presentation/auth/blocs/auth_bloc.dart';
 
@@ -13,8 +15,8 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Sign In')),
+    return PlatformScaffold(
+      appBar: const ObstructingPreferredPlatformAppBar(title: 'Sign In'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

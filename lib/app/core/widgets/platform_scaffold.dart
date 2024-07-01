@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:x_clone/app/core/widgets/platform_appbar.dart';
 
 class PlatformScaffold extends StatelessWidget {
   const PlatformScaffold({
@@ -17,7 +18,9 @@ class PlatformScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Platform.isIOS
         ? CupertinoPageScaffold(
-            navigationBar: appBar as ObstructingPreferredSizeWidget?,
+            navigationBar: appBar is ObstructingPreferredPlatformAppBar
+                ? appBar! as ObstructingPreferredPlatformAppBar
+                : null,
             child: body,
           )
         : Scaffold(

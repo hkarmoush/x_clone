@@ -14,7 +14,7 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      appBar: const PlatformAppBar(title: 'Reset Password'),
+      appBar: const ObstructingPreferredPlatformAppBar(title: 'Reset Password'),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(

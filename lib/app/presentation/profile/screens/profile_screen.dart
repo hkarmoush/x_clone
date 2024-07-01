@@ -43,7 +43,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      appBar: PlatformAppBar(
+      appBar: ObstructingPreferredPlatformAppBar(
         title: 'Profile',
         actions: [
           IconButton(
