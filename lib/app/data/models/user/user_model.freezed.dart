@@ -22,6 +22,12 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 mixin _$UserModel {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get bio => throw _privateConstructorUsedError;
+  String? get profilePictureUrl => throw _privateConstructorUsedError;
+  String? get bannerImageUrl => throw _privateConstructorUsedError;
+  int get followingCount => throw _privateConstructorUsedError;
+  int get followersCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +40,15 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String uid, String email});
+  $Res call(
+      {String uid,
+      String email,
+      String? name,
+      String? bio,
+      String? profilePictureUrl,
+      String? bannerImageUrl,
+      int followingCount,
+      int followersCount});
 }
 
 /// @nodoc
@@ -52,6 +66,12 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   $Res call({
     Object? uid = null,
     Object? email = null,
+    Object? name = freezed,
+    Object? bio = freezed,
+    Object? profilePictureUrl = freezed,
+    Object? bannerImageUrl = freezed,
+    Object? followingCount = null,
+    Object? followersCount = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -62,6 +82,30 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePictureUrl: freezed == profilePictureUrl
+          ? _value.profilePictureUrl
+          : profilePictureUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bannerImageUrl: freezed == bannerImageUrl
+          ? _value.bannerImageUrl
+          : bannerImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      followingCount: null == followingCount
+          ? _value.followingCount
+          : followingCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followersCount: null == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -74,7 +118,15 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid, String email});
+  $Res call(
+      {String uid,
+      String email,
+      String? name,
+      String? bio,
+      String? profilePictureUrl,
+      String? bannerImageUrl,
+      int followingCount,
+      int followersCount});
 }
 
 /// @nodoc
@@ -90,6 +142,12 @@ class __$$UserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? uid = null,
     Object? email = null,
+    Object? name = freezed,
+    Object? bio = freezed,
+    Object? profilePictureUrl = freezed,
+    Object? bannerImageUrl = freezed,
+    Object? followingCount = null,
+    Object? followersCount = null,
   }) {
     return _then(_$UserModelImpl(
       uid: null == uid
@@ -100,6 +158,30 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePictureUrl: freezed == profilePictureUrl
+          ? _value.profilePictureUrl
+          : profilePictureUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bannerImageUrl: freezed == bannerImageUrl
+          ? _value.bannerImageUrl
+          : bannerImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      followingCount: null == followingCount
+          ? _value.followingCount
+          : followingCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followersCount: null == followersCount
+          ? _value.followersCount
+          : followersCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -107,7 +189,15 @@ class __$$UserModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
-  const _$UserModelImpl({required this.uid, required this.email});
+  const _$UserModelImpl(
+      {required this.uid,
+      required this.email,
+      this.name,
+      this.bio,
+      this.profilePictureUrl,
+      this.bannerImageUrl,
+      this.followingCount = 0,
+      this.followersCount = 0});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -116,10 +206,24 @@ class _$UserModelImpl implements _UserModel {
   final String uid;
   @override
   final String email;
+  @override
+  final String? name;
+  @override
+  final String? bio;
+  @override
+  final String? profilePictureUrl;
+  @override
+  final String? bannerImageUrl;
+  @override
+  @JsonKey()
+  final int followingCount;
+  @override
+  @JsonKey()
+  final int followersCount;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, email: $email)';
+    return 'UserModel(uid: $uid, email: $email, name: $name, bio: $bio, profilePictureUrl: $profilePictureUrl, bannerImageUrl: $bannerImageUrl, followingCount: $followingCount, followersCount: $followersCount)';
   }
 
   @override
@@ -128,12 +232,23 @@ class _$UserModelImpl implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.profilePictureUrl, profilePictureUrl) ||
+                other.profilePictureUrl == profilePictureUrl) &&
+            (identical(other.bannerImageUrl, bannerImageUrl) ||
+                other.bannerImageUrl == bannerImageUrl) &&
+            (identical(other.followingCount, followingCount) ||
+                other.followingCount == followingCount) &&
+            (identical(other.followersCount, followersCount) ||
+                other.followersCount == followersCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, email);
+  int get hashCode => Object.hash(runtimeType, uid, email, name, bio,
+      profilePictureUrl, bannerImageUrl, followingCount, followersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -152,7 +267,13 @@ class _$UserModelImpl implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {required final String uid,
-      required final String email}) = _$UserModelImpl;
+      required final String email,
+      final String? name,
+      final String? bio,
+      final String? profilePictureUrl,
+      final String? bannerImageUrl,
+      final int followingCount,
+      final int followersCount}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -161,6 +282,18 @@ abstract class _UserModel implements UserModel {
   String get uid;
   @override
   String get email;
+  @override
+  String? get name;
+  @override
+  String? get bio;
+  @override
+  String? get profilePictureUrl;
+  @override
+  String? get bannerImageUrl;
+  @override
+  int get followingCount;
+  @override
+  int get followersCount;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
