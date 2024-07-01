@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:x_clone/app/data/datasources/user/user_datasource.dart';
 import 'package:x_clone/app/data/models/user/user_model.dart';
+import 'package:x_clone/app/domain/entities/auth/registration_details.dart';
 import 'package:x_clone/app/domain/entities/user/user.dart';
 import 'package:x_clone/app/domain/repositories/auth_repository.dart';
 
@@ -28,10 +29,10 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<UserEntity> register(String email, String password) async {
+  Future<UserEntity> register(RegistrationDetails registrationDetails) async {
     final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: registrationDetails.email,
+      password: registrationDetails.password,
     );
     final model = UserModel.fromFirebaseUser(userCredential.user!);
 

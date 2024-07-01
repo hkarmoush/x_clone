@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:x_clone/app/core/util/app_logger.dart';
+import 'package:x_clone/app/domain/entities/auth/registration_details.dart';
 import 'package:x_clone/app/domain/entities/user/user.dart';
 import 'package:x_clone/app/domain/usecases/auth/auth_state_changed.dart';
 import 'package:x_clone/app/domain/usecases/auth/register.dart';
@@ -60,9 +61,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _onRegister(RegisterEvent event, Emitter<AuthState> emit) async {
-    AppLogger.debug('RegisterEvent: email=${event.email}');
+    AppLogger.debug('RegisterEvent: email=${event.registrationDetails.email}');
     try {
-      final user = await _register(event.email, event.password);
+      final user = await _register(event.registrationDetails);
       AppLogger.info('User registered: ${user.email}');
     } catch (e) {
       emit(AuthError(e.toString()));

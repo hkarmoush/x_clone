@@ -6,13 +6,15 @@ import 'package:x_clone/app/core/widgets/platform_button.dart';
 import 'package:x_clone/app/core/widgets/platform_scaffold.dart';
 import 'package:x_clone/app/core/widgets/platform_text_button.dart';
 import 'package:x_clone/app/core/widgets/platform_textfield.dart';
+import 'package:x_clone/app/domain/entities/auth/registration_details.dart';
 import 'package:x_clone/app/presentation/auth/blocs/auth_bloc.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,15 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             children: [
               PlatformTextField(
-                controller: emailController,
+                controller: _nameController,
+                placeholder: 'Name',
+              ),
+              PlatformTextField(
+                controller: _emailController,
                 placeholder: 'Email',
               ),
               PlatformTextField(
-                controller: passwordController,
+                controller: _passwordController,
                 placeholder: 'Password',
                 obscureText: true,
               ),
@@ -36,9 +42,17 @@ class SignUpScreen extends StatelessWidget {
               PlatformButton(
                 text: 'Sign Up',
                 onPressed: () {
-                  final email = emailController.text;
-                  final password = passwordController.text;
-                  context.read<AuthBloc>().add(RegisterEvent(email, password));
+                  final name = _nameController.text;
+                  final email = _emailController.text;
+                  final password = _passwordController.text;
+                  final registrationDetails = RegistrationDetails(
+                    name: name,
+                    email: email,
+                    password: password,
+                  );
+                  context.read<AuthBloc>().add(
+                        RegisterEvent(registrationDetails),
+                      );
                 },
               ),
               PlatformTextButton(

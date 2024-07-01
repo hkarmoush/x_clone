@@ -20,13 +20,12 @@ class SignInEvent extends AuthEvent {
 class SignOutEvent extends AuthEvent {}
 
 class RegisterEvent extends AuthEvent {
-  const RegisterEvent(this.email, this.password);
+  const RegisterEvent(this.registrationDetails);
 
-  final String email;
-  final String password;
+  final RegistrationDetails registrationDetails;
 
   @override
-  List<Object> get props => [email, password];
+  List<Object> get props => [registrationDetails];
 }
 
 class ResetPasswordEvent extends AuthEvent {
