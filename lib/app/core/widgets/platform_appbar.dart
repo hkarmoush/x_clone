@@ -16,6 +16,7 @@ class PlatformAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Platform.isIOS
         ? CupertinoNavigationBar(
             middle: Text(title),
+            // leading: const Icon(CupertinoIcons.back),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: actions ?? [],
