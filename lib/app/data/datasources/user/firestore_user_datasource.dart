@@ -42,4 +42,15 @@ class UserDataSourceFirestore implements UserDataSource {
   Future<void> deleteUser(String uid) async {
     await firestore.collection('users').doc(uid).delete();
   }
+
+  @override
+  Future<UserModel> fetchUserProfile(String uid) async {
+    final doc = await firestore.collection('users').doc(uid).get();
+    return UserModel.fromJson(doc.data()!);
+  }
+
+  @override
+  Future<void> updateUserProfile(UserModel user) async {
+    await firestore.collection('users').doc(user.uid).update(user.toJson());
+  }
 }
