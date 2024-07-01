@@ -31,19 +31,21 @@ class HomeScreenState extends State<HomeScreen> {
     showPlatformBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              ListTile(
-                leading: const Icon(Icons.create),
-                title: const Text('Create Tweet'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+        return Material(
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: const Icon(Icons.create),
+                  title: const Text('Create Tweet'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },
